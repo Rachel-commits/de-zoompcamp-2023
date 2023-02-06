@@ -32,9 +32,7 @@ def write_gcs(path: Path) -> None:
     """Uploading to GCS"""
     gcs_block = GcsBucket.load("zoom-gcs")
     gcs_block.upload_from_path(
-        from_path = f"{path}",
-        to_path = path
-    )
+        from_path=path, to_path=path)
     return
 _
 @flow()
