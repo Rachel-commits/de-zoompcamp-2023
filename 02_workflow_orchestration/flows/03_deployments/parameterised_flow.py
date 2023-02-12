@@ -32,6 +32,8 @@ def write_local(df: pd.DataFrame, colour: str, dataset_file: str) -> Path:
 @task()
 def write_gcs(path: Path) -> None:
     """Uploading to GCS"""
+    
+    path = Path(path).as_posix() 
     gcs_block = GcsBucket.load("zoom-gcs")
     gcs_block.upload_from_path(
         from_path=path, to_path=path)
@@ -50,13 +52,14 @@ def etl_web_to_gcs(colour: str, year: int, month: int) -> None:
 
 @flow()
 def etl_parent_flow(
-    months: list[int] = [1, 2], year: int = 2020, colour: str = "green"
+    months: list[int] = [1, 2], year: int = 2020, colour: str = "yellow"
 ):
     for month in months:
-        etl_web_to_gcs(colour,year, month,)
+        etl_web_to_gcs(colour,year, month)
+
 if __name__ == "__main__":
-    colour = "green"
-    months = [1,2,3]
-    year = 2020
+    colour = "yellow"
+    months = [3,4]
+    year = 2021
     etl_parent_flow(months, year, colour)
 

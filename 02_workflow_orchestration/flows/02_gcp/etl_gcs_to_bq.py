@@ -27,7 +27,6 @@ def write_bq(df: pd.DataFrame) -> None:
     """Write DataFrame to BiqQuery"""
 
     gcp_credentials_block = GcpCredentials.load("zoom-gcp-creds")
-
     df.to_gbq(
         destination_table="dezoomcamp.trips",
         project_id="zoomcamp-376919",

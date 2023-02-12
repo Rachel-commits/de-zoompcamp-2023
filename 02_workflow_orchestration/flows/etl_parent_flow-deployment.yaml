@@ -4,7 +4,7 @@
 name: Parameterised ETL
 description: null
 version: f9e262a609c9ab260acc19d802165d6f
-# The work queue that will handle this deployment's runs
+# The work queue that will handle thisd deployment's runs
 work_queue_name: default
 tags: []
 parameters: {"months": [1,2,3], "year": 2021, "colour":"yellow"}
